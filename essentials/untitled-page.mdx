@@ -1,68 +1,159 @@
 ---
-title: Basic Lane
-description: Civil 3D subassembly reference for a basic lane component.
+title: "UXCAD Dynamic Curb"
+description: "Dynamic Civil 3D curb subassembly with configurable curb geometry, flowline controls, point/link/shape codes, and target support."
 ---
 
-# Basic Lane
+# UXCAD Dynamic Curb
+
+## Overview
+
+The **UXCAD Dynamic Curb** subassembly creates a configurable curb section with control over flange, flowline, top front, and top back geometry. It is designed to let the user build curb conditions using either fixed dimensions, grades, or target-driven control points.
+
+This subassembly is useful for curb and gutter conditions where the curb shape needs to remain flexible while still maintaining consistent Civil 3D point, link, and shape coding.
 
 ## Preview
 
-<img src="/images/basic-lane.png" alt="Basic Lane subassembly diagram" />
+![UXCAD Dynamic Curb subassembly preview](/images/uxcad-dynamic-curb-preview.png)
 
-## Description
+## Primary Use Cases
 
-Creates a basic lane section from the attachment point using a defined width, cross slope, and pavement depth.
+- Standard curb and gutter sections
+- Flange-to-flowline controlled curb layouts
+- Flowline-to-top-front curb face control
+- Top-front-to-top-back curb cap control
+- Target-driven curb geometry
+- Code-controlled corridor surfaces and quantities
 
 ## Attachment
 
-The attachment point is located at the inside edge of lane on finished grade.
+The attachment point is located at the **flange point** of the curb section.
+
+The subassembly builds outward from the flange toward the flowline, top front, and top back points.
 
 ## Input Parameters
 
-| Parameter | Description | Type | Default |
-| --- | --- | --- | --- |
-| Side | Specifies which side to place the subassembly | Left / Right | Right |
-| Width | Width of the lane | Numeric, positive | 12.00 ft |
-| Depth | Depth from finish grade to subbase | Numeric, positive | 0.67 ft |
-| %Slope | Cross slope of the lane | Numeric | -2% |
-| InsidePointCode | Point code for the inside lane point | String | Crown |
-| OutsidePointCode | Point code for the outside lane point | String | ETW |
-| TopLinkCode | Link code for the top lane link | String | Pave |
-| ShapeCode | Shape code for the lane shape | String | Pave |
+| Parameter | Display Name | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| Insertion\_Point | Attachment Point | InsertionPoint | InsertionPoint\_Flange | Controls where the subassembly attaches. |
+| Side | Side | Side | Right | Determines whether the subassembly is placed left or right. |
+| Dimension\_H | Curb Depth | Double | 0.5 | Controls the overall curb depth. |
+| BackAttachPoint\_Visibility | Show Back of Curb Attach Point | Yes/No | No | Toggles the back curb attachment point on or off. |
+| Dimension\_G | Back of Curb Attachment Depth | Double | 0.25 | Controls the back attachment depth. |
+| Flange\_Flowline\_Set | (FL) Set by Height or Grade | Flange\_FlowLine | Flange\_FlowLine\_Grade | Controls whether flange-to-flowline is driven by height or grade. |
+| Dimension\_B | Flange to FlowLine Distance | Double | 2 | Horizontal distance from flange to flowline. |
+| Dimension\_A | Flange to FlowLine Height | Double | -0.1 | Vertical height difference from flange to flowline. |
+| Dimension\_A1 | Flange to FlowLine Grade | Grade | -2.00% | Grade from flange to flowline. |
+| Flowline\_TopFront\_Set | (TFC) Set by Height or Grade | FlowLine\_TopFront | FlowLine\_TopFront\_Depth | Controls whether flowline-to-top-front is driven by height or grade. |
+| Dimension\_C | FlowLine "FL" to TopFront "Face" Distance | Double | 0.5 | Horizontal distance from flowline to top front face. |
+| Dimension\_D | FlowLine "FL" to TopFront "Face" Height | Double | 0.5 | Vertical height from flowline to top front face. |
+| Dimension\_D1 | FlowLine "FL" to TopFront "Face" Grade | Grade | 100.00% | Grade from flowline to top front face. |
+| TopFront\_TopBack\_Set | Top Front "Face" to Top Back "TBC" Set by Height or Grade | TopFront\_TopBack | TopFront\_TopBack\_Grade | Controls whether top-front-to-top-back is driven by height or grade. |
+| Dimension\_E | Top Front "Face" to Top Back "TBC" Distance | Double | 0.5 | Horizontal distance from top front to top back. |
+| Dimension\_F | Top Front "Face" to Top Back "TBC" Height | Double | 0 | Vertical height difference from top front to top back. |
+| Dimension\_F1 | Top Front to Top Back Grade | Grade | 0.00% | Grade from top front to top back. |
 
 ## Target Parameters
 
-Target Parameters: None.
-
-## Output Parameters
-
-| Parameter | Description | Type |
+| Target Parameter | Type | Description |
 | --- | --- | --- |
-| Side | Specifies which side the subassembly is placed | Left / Right |
-| Width | Width of the lane | Numeric |
-| Depth | Depth from finish grade to subbase | Numeric |
-| %Slope | Cross slope of the lane | Numeric |
+| Target\_Flange\_Elevation | Elevation | Optional elevation target for the flange point. |
+| Target\_Flange\_Offset | Offset | Optional offset target for the flange point. |
+| Target\_FlowLine\_Elevation | Elevation | Optional elevation target for the flowline point. |
+| Target\_FlowLine\_Offset | Offset | Optional offset target for the flowline point. |
+| Target\_TopFront\_Elevation | Elevation | Optional elevation target for the top front point. |
+| Target\_TopFront\_Offset | Offset | Optional offset target for the top front point. |
+| Target\_TopBack\_Elevation | Elevation | Optional elevation target for the top back point. |
+| Target\_TopBack\_Offset | Offset | Optional offset target for the top back point. |
+
+## Enumerations
+
+The UXCAD Dynamic Curb subassembly uses enumerations to simplify user control and reduce unnecessary parameter exposure. These dropdown-driven controls determine how geometry is calculated throughout the curb section.
+
+<AccordionGroup>
+  <Accordion title="InsertionPoint">
+    Controls where the subassembly attaches to the corridor assembly.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | InsertionPoint\_Flange | Flange | Attaches the subassembly at the flange point. |
+    | InsertionPoint\_FlowLine | Flow Line | Attaches the subassembly at the flowline point. |
+    | InsertionPoint\_TopBack | Top Back | Attaches the subassembly at the top back curb point. |
+  </Accordion>
+
+  <Accordion title="Flange_FlowLine">
+    Controls how the flange-to-flowline relationship is calculated.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | Flange\_FlowLine\_Depth | Height | Uses a vertical height difference between flange and flowline. |
+    | Flange\_FlowLine\_Grade | Grade | Uses a grade value between flange and flowline. |
+  </Accordion>
+
+  <Accordion title="FlowLine_TopFront">
+    Controls how the flowline-to-top-front curb face is calculated.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | FlowLine\_TopFront\_Depth | Height | Uses a vertical height difference from flowline to top front. |
+    | FlowLine\_TopFront\_Grade | Grade | Uses a grade value from flowline to top front. |
+  </Accordion>
+
+  <Accordion title="TopFront_TopBack">
+    Controls how the top-front-to-top-back curb section is calculated.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | TopFront\_TopBack\_Depth | Height | Uses a vertical height difference from top front to top back. |
+    | TopFront\_TopBack\_Grade | Grade | Uses a grade value from top front to top back. |
+
+    ### 
+  </Accordion>
+</AccordionGroup>
+
+## Enumeration Workflow
+
+These enumerations dynamically control which geometry calculations are active within the subassembly.
+
+Typical workflow:
+
+1. Select attachment location
+2. Choose whether geometry is controlled by:
+   - Height
+   - Grade
+3. Enter corresponding dimension values
+4. Apply optional targets if needed
+
+This approach allows a single subassembly to support multiple curb design configurations without requiring separate PKTs.
+
+---
+
+## Codes
+
+| Object | Code |
+| --- | --- |
+| P1 | Flange |
+| P2 | Flowline\_Gutter |
+| P3 | Top\_Curb |
+| P4 | Back\_Curb |
+| L1 | Top, Curb |
+| L2 | Top, Curb |
+| L6 | Datum |
+| S1 | Curb |
 
 ## Behavior
 
-The lane is created from the attachment point outward using the assigned side, width, and slope. The pavement depth is applied downward from the finished grade link.
-
-## Point, Link, and Shape Codes
-
-| Code Type | Parameter | Purpose |
-| --- | --- | --- |
-| Point | InsidePointCode | Applies the inside lane point code |
-| Point | OutsidePointCode | Applies the outside lane point code |
-| Link | TopLinkCode | Applies the finished grade/top link code |
-| Shape | ShapeCode | Applies the material/quantity shape code |
+The curb is built from the flange point and continues outward through the flowline, top front, and top back geometry. Each major curb segment can be controlled by a fixed height, fixed grade, or target parameter depending on the selected control method.
 
 ## Notes
 
-All dimensions are in feet unless otherwise noted. Slopes are entered as percent slopes unless the parameter specifically expects a ratio.
+Use this subassembly when the curb section needs to remain flexible across different design conditions without creating multiple separate curb subassemblies.
 
-## Warning
+## Recommended Image Setup
 
-If any code parameter is blank, the subassembly may still build, but corridor labels, code set styles, surfaces, and quantity takeoffs may not behave correctly.
+Save your screenshots or Affinity graphics here:
 
-```vb
-InsidePointCode = "" Or OutsidePointCode = "" Or TopLinkCode = "" Or ShapeCode = ""
+```text
+/images/uxcad-dynamic-curb-preview.png
+/images/uxcad-dynamic-curb-parameters.png
+/images/uxcad-dynamic-curb-targets.png
+```
