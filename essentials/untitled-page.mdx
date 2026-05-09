@@ -1,0 +1,68 @@
+---
+title: Basic Lane
+description: Civil 3D subassembly reference for a basic lane component.
+---
+
+# Basic Lane
+
+## Preview
+
+<img src="/images/basic-lane.png" alt="Basic Lane subassembly diagram" />
+
+## Description
+
+Creates a basic lane section from the attachment point using a defined width, cross slope, and pavement depth.
+
+## Attachment
+
+The attachment point is located at the inside edge of lane on finished grade.
+
+## Input Parameters
+
+| Parameter | Description | Type | Default |
+| --- | --- | --- | --- |
+| Side | Specifies which side to place the subassembly | Left / Right | Right |
+| Width | Width of the lane | Numeric, positive | 12.00 ft |
+| Depth | Depth from finish grade to subbase | Numeric, positive | 0.67 ft |
+| %Slope | Cross slope of the lane | Numeric | -2% |
+| InsidePointCode | Point code for the inside lane point | String | Crown |
+| OutsidePointCode | Point code for the outside lane point | String | ETW |
+| TopLinkCode | Link code for the top lane link | String | Pave |
+| ShapeCode | Shape code for the lane shape | String | Pave |
+
+## Target Parameters
+
+Target Parameters: None.
+
+## Output Parameters
+
+| Parameter | Description | Type |
+| --- | --- | --- |
+| Side | Specifies which side the subassembly is placed | Left / Right |
+| Width | Width of the lane | Numeric |
+| Depth | Depth from finish grade to subbase | Numeric |
+| %Slope | Cross slope of the lane | Numeric |
+
+## Behavior
+
+The lane is created from the attachment point outward using the assigned side, width, and slope. The pavement depth is applied downward from the finished grade link.
+
+## Point, Link, and Shape Codes
+
+| Code Type | Parameter | Purpose |
+| --- | --- | --- |
+| Point | InsidePointCode | Applies the inside lane point code |
+| Point | OutsidePointCode | Applies the outside lane point code |
+| Link | TopLinkCode | Applies the finished grade/top link code |
+| Shape | ShapeCode | Applies the material/quantity shape code |
+
+## Notes
+
+All dimensions are in feet unless otherwise noted. Slopes are entered as percent slopes unless the parameter specifically expects a ratio.
+
+## Warning
+
+If any code parameter is blank, the subassembly may still build, but corridor labels, code set styles, surfaces, and quantity takeoffs may not behave correctly.
+
+```vb
+InsidePointCode = "" Or OutsidePointCode = "" Or TopLinkCode = "" Or ShapeCode = ""
