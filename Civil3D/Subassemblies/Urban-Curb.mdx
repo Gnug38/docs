@@ -1,0 +1,196 @@
+---
+title: "Urban Curb"
+description: "UXCAD's Take on intuitively creating a Flowline to Top Back Curb section and having the ability to use targets for all top points for this subassembly."
+---
+
+## Overview
+
+The **UXCAD Dynamic Curb** subassembly creates a configurable curb section with control over flowline, top front, and top back geometry. It is designed to let the user build curb conditions using either fixed dimensions, grades, or target-driven control points.
+
+This subassembly is useful for curb and gutter conditions where the curb shape needs to remain flexible while still maintaining consistent Civil 3D point, link, and shape coding.
+
+## Preview
+
+![UXCAD Dynamic Curb subassembly preview](/images/uxcad-dynamic-curb-preview.png)
+
+## Primary Use Cases
+
+- Standard curb and gutter sections
+- Flange-to-flowline controlled curb layouts
+- Flowline-to-top-front curb face control
+- Top-front-to-top-back curb cap control
+- Target-driven curb geometry
+- Code-controlled corridor surfaces and quantities
+
+## Attachment
+
+The attachment point is located at the **Flange, FlowLine and Top Back Curb** of the curb section.
+
+## Input Parameters
+
+| Parameter | Display Name | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| Insertion\_Point | Attachment Point | InsertionPoint | InsertionPoint\_TopBack | Attachment Point |
+| Side | Side | Side | Right | Determines whether the subassembly is placed left or right. |
+| Dimension\_H | Curb Depth | Double | 0.5 | Curb Depth |
+| BackAttachPoint\_Visibility | Show Back of Curb Attach Point | Yes/No | No | Toggles the back curb attachment point on and off. |
+| Dimension\_G | Back of Curb Attachment Depth | Double | 0.25 | This has a 0.01' offset from back-attached subassembly. Subtract subassembly by 0.01 to retain exact distance. |
+| FlowLine\_TopFront\_Set | (TFC) Set by Height or Grade | FlowLine\_TopFront | FlowLine\_TopFront\_Depth | Controls whether the flowline to top front face difference is controlled by grade or height. |
+| Dimension\_C | FlowLine "FL" to TopFront "Face" Distance | Double | 0.5 | Distance from Flow Line to Top Front "Face" point. |
+| Dimension\_D | FlowLine "FL" to TopFront "Face" Height | Double | 0.5 | Height from Flow Line to Top Front "Face" point. |
+| Dimension\_D1 | FlowLine "FL" to TopFront "Face" Grade | Grade | 100.00% | Grade from Flow Line to Top Front "Face" point. |
+| TopFront\_TopBack\_Set | Top Front "Face" to Top Back "TBC" Set by Height or Grade | TopFront\_TopBack | TopFront\_TopBack\_Grade | Controls whether the top front face to top back curb difference is controlled by grade or height. |
+| Dimension\_E | Top Front "Face" to Top Back "TBC" Distance | Double | 0.5 | Distance from Top Front "Face" to Top Back "TBC" point. |
+| Dimension\_F | Top Front "Face" to Top Back "TBC" Height | Double | 0 | Height from Top Front "Face" to Top Back point. |
+| Dimension\_F1 | Top Front to Top Back Grade | Grade | 0.00% | Grade from Top Front "Face" to Top Back point. |
+| InsideBottomPointCode | Inside Bottom Point Code | String | Curb\_Sub | User defined inside bottom point code relative to the insertion point. |
+| OutsideBottomPointCode | Outside Bottom Point Code | String | Curb\_Sub | User defined outside bottom point code relative to the insertion point. |
+| BottomLinkCode | Bottom Link Code | String | Curb\_Sub | User defined bottom link code. |
+
+---
+
+## Target Parameters
+
+| Target Parameter | Type | Description | Required |
+| --- | --- | --- | --- |
+| Target\_FlowLine\_Elevation | Elevation | Optional elevation target for the flowline point. | Optional |
+| Target\_FlowLine\_Offset | Offset | Optional offset target for the flowline point. | Optional |
+| Target\_TopFront\_Elevation | Elevation | Optional elevation target for the top front point. | Optional |
+| Target\_TopFront\_Offset | Offset | Optional offset target for the top front point. | Optional |
+| Target\_TopBack\_Elevation | Elevation | Optional elevation target for the top back point. | Optional |
+| Target\_TopBack\_Offset | Offset | Optional offset target for the top back point. | Optional |
+
+---
+
+## Enumerations
+
+<AccordionGroup>
+  <Accordion title="InsertionPoint">
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | InsertionPoint\_FlowLine | Flow Line | Attaches the subassembly at the flowline point. |
+    | InsertionPoint\_TopBack | Top Back | Attaches the subassembly at the top back curb point. |
+  </Accordion>
+
+  <Accordion title="FlowLine_TopFront">
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | FlowLine\_TopFront\_Depth | Height | Uses a vertical height difference from flowline to top front. |
+    | FlowLine\_TopFront\_Grade | Grade | Uses a grade value from flowline to top front. |
+  </Accordion>
+
+  <Accordion title="TopFront_TopBack">
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | TopFront\_TopBack\_Depth | Height | Uses a vertical height difference from top front to top back. |
+    | TopFront\_TopBack\_Grade | Grade | Uses a grade value from top front to top back. |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Codes
+
+<CardGroup cols={3}>
+  <Card title="Point Codes">
+    | Code Item | Point |
+    | --- | --- |
+    | Curb\_FlowLine | Yes |
+    | Curb\_Front | Yes |
+    | Curb\_Back | Yes |
+    | Back\_Curb\_BackAttach | Yes |
+  </Card>
+
+  <Card title="Link Codes">
+    | Code Item | Link |
+    | --- | --- |
+    | Top | Yes |
+    | Curb | Yes |
+  </Card>
+
+  <Card title="Shape Codes">
+    | Code Item | Shape |
+    | --- | --- |
+    | Curb | Yes |
+  </Card>
+</CardGroup>
+
+## Behavior
+
+The curb is built from the flange point and continues outward through the flowline, top front, and top back geometry. Each major curb segment can be controlled by a fixed height, fixed grade, or target parameter depending on the selected control method.
+
+## Notes
+
+Use this subassembly when the curb section needs to remain flexible across different design conditions without creating multiple separate curb subassemblies.
+
+## Recommended Image Setup
+
+Save your screenshots or Affinity graphics here:
+
+```text
+/images/uxcad-dynamic-curb-preview.png
+/images/uxcad-dynamic-curb-parameters.png
+/images/uxcad-dynamic-curb-targets.png
+```
+
+| Parameter | Display Name | Description | Type | Default |
+| --- | --- | --- | --- | --- |
+| Insertion\_Point | Attachment Point | Controls where the subassembly attaches. | InsertionPoint | InsertionPoint\_Flange |
+| Side | Side | Determines whether the subassembly is placed left or right. | Side | Right |
+| Dimension\_H | Curb Depth | Controls the overall curb depth. | Double | 0.5 |
+| BackAttachPoint\_Visibility | Show Back of Curb Attach Point | Toggles the back curb attachment point on or off. | Yes/No | No |
+| Dimension\_G | Back of Curb Attachment Depth | Controls the back attachment depth. | Double | 0.25 |
+| Flange\_Flowline\_Set | (FL) Set by Height or Grade | Controls whether flange-to-flowline is driven by height or grade. | Flange\_FlowLine | Flange\_FlowLine\_Grade |
+| Dimension\_B | Flange to FlowLine Distance | Horizontal distance from flange to flowline. | Double | 2 |
+| Dimension\_A | Flange to FlowLine Height | Vertical height difference from flange to flowline. | Double | -0.1 |
+| Dimension\_A1 | Flange to FlowLine Grade | Grade from flange to flowline. | Grade | -2.00% |
+| Flowline\_TopFront\_Set | (TFC) Set by Height or Grade | Controls whether flowline-to-top-front is driven by height or grade. | FlowLine\_TopFront | FlowLine\_TopFront\_Depth |
+| Dimension\_C | FlowLine "FL" to TopFront "Face" Distance | Horizontal distance from flowline to top front face. | Double | 0.5 |
+| Dimension\_D | FlowLine "FL" to TopFront "Face" Height | Vertical height from flowline to top front face. | Double | 0.5 |
+| Dimension\_D1 | FlowLine "FL" to TopFront "Face" Grade | Grade from flowline to top front face. | Grade | 100.00% |
+| TopFront\_TopBack\_Set | Top Front "Face" to Top Back "TBC" Set by Height or Grade | Controls whether top-front-to-top-back is driven by height or grade. | TopFront\_TopBack | TopFront\_TopBack\_Grade |
+| Dimension\_E | Top Front "Face" to Top Back "TBC" Distance | Horizontal distance from top front to top back. | Double | 0.5 |
+| Dimension\_F | Top Front "Face" to Top Back "TBC" Height | Vertical height difference from top front to top back. | Double | 0 |
+| Dimension\_F1 | Top Front to Top Back Grade | Grade from top front to top back. | Grade | 0.00% |
+
+---
+
+| Target Parameter | Type | Description | Required |
+| --- | --- | --- | --- |
+| Target\_Flange\_Elevation | Elevation | Optional elevation target for the flange point. | Optional |
+| Target\_Flange\_Offset | Offset | Optional offset target for the flange point. | Optional |
+| Target\_FlowLine\_Elevation | Elevation | Optional elevation target for the flowline point. | Optional |
+| Target\_FlowLine\_Offset | Offset | Optional offset target for the flowline point. | Optional |
+| Target\_TopFront\_Elevation | Elevation | Optional elevation target for the top front point. | Optional |
+| Target\_TopFront\_Offset | Offset | Optional offset target for the top front point. | Optional |
+| Target\_TopBack\_Elevation | Elevation | Optional elevation target for the top back point. | Optional |
+| Target\_TopBack\_Offset | Offset | Optional offset target for the top back point. | Optional |
+
+---
+
+## Code List by Insertion Point
+
+<CardGroup cols={3}>
+  <Card title="Flange">
+    | Object | Code |
+    | --- | --- |
+    | P1 | Flange |
+    | P2 | Flowline\_Gutter |
+    | P3 | Top\_Curb |
+    | P4 | Back\_Curb |
+  </Card>
+
+  <Card title="Flow Line">
+    | Object | Code |
+    | --- | --- |
+    | L1 | Top, Curb |
+    | L2 | Top, Curb |
+    | L6 | Datum |
+  </Card>
+
+  <Card title="Top Back">
+    | Object | Code |
+    | --- | --- |
+    | S1 | Curb |
+  </Card>
+</CardGroup>

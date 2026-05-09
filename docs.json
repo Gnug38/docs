@@ -16,8 +16,8 @@
           {
             "tab": "Subassemblies",
             "pages": [
-              "Civil3D/Subassemblies/Curb-and-Gutter",
-              "Civil3D/Subassemblies/Curb",
+              "Civil3D/Subassemblies/Urban-Curb-and-Gutter",
+              "Civil3D/Subassemblies/Urban-Curb",
               "Civil3D/Subassemblies/Urban-Simplified",
               "Civil3D/Subassemblies/Urban-Link",
               "Civil3D/Subassemblies/Daylight",
