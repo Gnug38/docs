@@ -1,0 +1,81 @@
+---
+title: "Urban Simplified"
+description: "UXCAD Version for a build your own codes for reducing amount of subassemblies in drawing."
+---
+
+## Overview
+
+UXCAD Version for a build your own codes for reducing amount of subassemblies in drawing. This gives the user the ability to provide customization for the codes being used with a familiar functionality for how the subassembly is being used.
+
+## Preview
+
+![UXCAD Dynamic Curb subassembly preview](/images/uxcad-dynamic-curb-preview.png)
+
+## Primary Use Cases
+
+- Lane versions
+- Supporting a **<u>Add your own code set</u>**<u> </u>to apply unique visual styles for your corridor
+
+## Attachment
+
+The attachment point is located at the insertion point and the code can be entered under the **Point Code for Inside Point**.
+
+## Input Parameters
+
+| Parameter | Display Name | Description | Type | Default |
+| --- | --- | --- | --- | --- |
+| Side | Side | Determines whether the subassembly is placed left or right. | Side | Right |
+| Width | Width | Controls the pavement width. | Double | 5 |
+| Grade | Grade | Controls the top pavement slope. | Grade | -2.00% |
+| Thickness | Thickness | Controls the pavement thickness. | Double | 0.5 |
+| InsidePointCode | Point Code for Inside Point | Point code for the inside point. | String | Crown |
+| OutsidePointCode | Point Code for Outside Point | Point code for the outside point. | String | ETW |
+| TopLinkCode | Link Code for Top Link | Link code for the top pavement link. | String | Pave |
+| ShapeCode | Shape Code | Shape code for the pavement shape. | String | Pave |
+
+---
+
+## Target Parameters
+
+| Target Parameter | Type | Description | Required |
+| --- | --- | --- | --- |
+| Target\_Offset | Offset | Optional offset target for the outside edge point. | Optional |
+| Target\_Elevation | Elevation | Optional elevation target for the outside edge point. | Optional |
+
+---
+
+## Enumerations
+
+This Subassembly does not have any enumarations.
+
+---
+
+## Codes
+
+| Object | Code |
+| :-- | :-- |
+| P1 | **User Defined** |
+| P2 | **User Defined** |
+| P3 | **User Defined**<br />\_Sub |
+| P4 | **User Defined**<br />\_Sub |
+| L1 | Top, **User Defined** |
+| L5 | **User Defined**\_Sub |
+| S1 | **User Defined** |
+
+## Behavior
+
+The curb is built from the flange point and continues outward through the flowline, top front, and top back geometry. Each major curb segment can be controlled by a fixed height, fixed grade, or target parameter depending on the selected control method.
+
+## Notes
+
+Use this subassembly when the curb section needs to remain flexible across different design conditions without creating multiple separate curb subassemblies.
+
+## Recommended Image Setup
+
+Save your screenshots or Affinity graphics here:
+
+```text
+/images/uxcad-dynamic-curb-preview.png
+/images/uxcad-dynamic-curb-parameters.png
+/images/uxcad-dynamic-curb-targets.png
+```
