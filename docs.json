@@ -16,9 +16,9 @@
           {
             "tab": "Subassemblies",
             "pages": [
-              "Curb-and-Gutter",
-              "Urban-Simplified",
-              "Urban-Link"
+              "Civil3D/Subassemblies/Curb-and-Gutter",
+              "Civil3D/Subassemblies/Urban-Simplified",
+              "Civil3D/Subassemblies/Urban-Link"
             ]
           }
         ]
