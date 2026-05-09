@@ -1,1 +1,139 @@
+# Civilworx – Workspace & Projects Overview
 
+This page explains how we organize Civilworx projects, who can access what, and how projects move between environments.
+
+Use this as your starting point for Civilworx documentation. You can tweak the wording later as the process gets more locked in.
+
+---
+
+## 1. What is a Civilworx workspace?
+
+A **Civilworx workspace** is the container for all project files, CAD standards, and automation tools for a specific organization or team.
+
+A workspace typically includes:
+
+- Shared Civil 3D templates and styles  
+- Block and linetype libraries  
+- Tool palettes and scripts  
+- Project folders (active, archived, QA, etc.)
+
+Every Civilworx project you work on should live inside a workspace.
+
+---
+
+## 2. Projects inside a workspace
+
+Inside each workspace, projects are grouped so it’s obvious what’s active and what’s not.
+
+Common project types:
+
+- **Active projects** – Current work in progress  
+- **As-built / closeout projects** – Final drawing sets, exported models, and deliverables  
+- **Archive projects** – Old work kept for reference only  
+
+For each project, we standardize:
+
+- Folder layout  
+- Naming convention  
+- Required drawings (EX_, PR_, UT_, etc.)  
+- Any Civil 3D–specific setup (surfaces, pipe networks, data shortcuts, etc.)
+
+---
+
+## 3. Roles and permissions
+
+Use this section to define who can touch what.
+
+Example:
+
+### Owner
+
+- Full control of the workspace  
+- Can add/remove users  
+- Can change standards and automation settings  
+- Can archive or delete projects
+
+### Designer
+
+- Can create and edit project drawings  
+- Can use Civilworx tools and standards  
+- Can’t delete the workspace or remove other users
+
+### Viewer / Guest
+
+- Read-only access to project deliverables  
+- Can download PDFs, exports, and reports  
+- Can’t change standards or project settings
+
+Adjust these roles to match how your actual team works.
+
+---
+
+## 4. Moving projects between workspaces
+
+Sometimes you need to move a project from one workspace to another (for example, when a client changes, or a project moves from “Internal” to “Client-Facing”).
+
+When you move a project:
+
+1. Confirm the **target workspace** is set up with the correct:  
+   - Civil 3D template  
+   - Tool palettes and scripts  
+   - Block libraries and standards  
+
+2. Move or re-link any of the following:  
+   - Data shortcut references  
+   - Xrefs and external blocks  
+   - Any automation scripts that point to old paths  
+
+3. Update access:  
+   - Remove users who shouldn’t see the project in the new workspace  
+   - Add the correct client/team users  
+
+If your new workspace doesn’t have the required tools or standards, fix that first before moving the project.
+
+---
+
+## 5. Duplicating or archiving projects
+
+### Duplicating a project
+
+Duplicate a project when you want to:
+
+- Reuse the same setup as a template  
+- Test changes without breaking the live project  
+
+When you duplicate:
+
+- Keep paths clean (no references pointing back to the original job folder)  
+- Rename the project and folders using your Civilworx naming convention  
+
+### Archiving a project
+
+Archive a project when it’s finished but still needs to be accessible later.
+
+Typical archive steps:
+
+1. Freeze the final drawing set  
+2. Clean up unused styles, layers, and junk geometry  
+3. Move the project into the **Archive** area of the workspace  
+4. Lock down permissions (read-only for most users)
+
+---
+
+## 6. Next steps for Civilworx docs
+
+Use this page as the “hub” for Civilworx standards. From here, you can add more detailed pages:
+
+- `[Project Setup Guide](/clients/civilworx/project-setup)`  
+- `[Civil 3D Standards](/clients/civilworx/civil3d-standards)`  
+- `[Tool Palettes & Scripts](/clients/civilworx/tools)`  
+- `[Deliverables Checklist](/clients/civilworx/deliverables)`  
+
+Create these pages later as new `.mdx` files in the same folder:
+
+- `project-setup.mdx`  
+- `civil3d-standards.mdx`  
+- `tools.mdx`  
+- `deliverables.mdx`  
+
+For now, just get this page in, commit, and you’ve got a solid Civilworx starting point.
