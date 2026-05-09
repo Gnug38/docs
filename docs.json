@@ -26,6 +26,7 @@
     "products": [
       {
         "product": "Untitled Product",
+        "hidden": true,
         "tabs": [
           {
             "tab": "Guides",
@@ -82,6 +83,17 @@
                   "api-reference/endpoint/webhook"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "product": "Civil3D",
+        "tabs": [
+          {
+            "tab": "Subassemblies",
+            "pages": [
+              "essentials/markdown-copied-1"
             ]
           }
         ]
