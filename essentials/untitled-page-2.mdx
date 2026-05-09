@@ -1,0 +1,89 @@
+---
+title: "Urban Link"
+description: "UXCAD Version for a build your own codes for reducing amount of subassemblies in drawing."
+---
+
+## Overview
+
+UXCADs take on providing the user a simplified link that accommodates elevation, offset and surface targets
+
+## Preview
+
+![UXCAD Dynamic Curb subassembly preview](/images/uxcad-dynamic-curb-preview.png)
+
+## Primary Use Cases
+
+- Generic link to other subassemblys
+- Supporting a **<u>Add your own code set</u>**<u> </u>to apply unique visual styles for your corridor
+
+## Attachment
+
+The attachment point is located at the insertion point and the code can be entered under the **Point Code for Inside Point**.
+
+## Input Parameters
+
+| Parameter | Display Name | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| Side | Side | Side | Right | Determines whether the subassembly is placed left or right. |
+| Width | Width | Double | 10 | Controls the horizontal pavement width. |
+| SlopeType | Grade or Slope | Slope\_Type | Grade\_Value | Toggles between grade or slope control methods. |
+| Grade | Grade | Grade | -2.00% | Controls the pavement grade value. |
+| Slope | Slope Run | Slope | 2.00:1 | Controls the pavement slope ratio. |
+| InsidePointCode | Inside Point Code | String | P1 | Defines the inside point code. |
+| OutsidePointCode | Outside Point Code | String | P2 | Defines the outside point code. |
+| LinkCode | Link Code | String | L1 | Defines the top link code. |
+
+---
+
+## Target Parameters
+
+| Target Parameter | Type | Description | Required |
+| --- | --- | --- | --- |
+| Target\_Offset | Offset | Optional offset target for the outside point. | Optional |
+| Target\_Surface | Surface | Optional surface target used for elevation sampling. | Optional |
+| Target\_Elevation | Elevation | Optional elevation target for the outside point. | Optional |
+
+---
+
+## Enumerations
+
+<AccordionGroup>
+  <Accordion title="Slope_Type">
+    Controls whether the pavement is driven by grade or slope ratio.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | Grade\_Value | Grade | Uses a percent grade value. |
+    | Slope\_Value | Slope | Uses a slope ratio value. |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Codes
+
+| Object | Code |
+| --- | --- |
+| P1 | **User Defined** |
+| P2 | **User Defined** |
+| L1 | Top, **User Defined** |
+
+---
+
+## Behavior
+
+The curb is built from the flange point and continues outward through the flowline, top front, and top back geometry. Each major curb segment can be controlled by a fixed height, fixed grade, or target parameter depending on the selected control method.
+
+## Notes
+
+Use this subassembly when the curb section needs to remain flexible across different design conditions without creating multiple separate curb subassemblies.
+
+## Recommended Image Setup
+
+Save your screenshots or Affinity graphics here:
+
+```text
+/images/uxcad-dynamic-curb-preview.png
+/images/uxcad-dynamic-curb-parameters.png
+/images/uxcad-dynamic-curb-targets.png
+```
