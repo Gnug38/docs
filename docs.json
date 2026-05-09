@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "luma",
+  "name": "UXCADconnection",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#117ac0",
+    "light": "#3F6D89",
+    "dark": "#0ba5d9"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/images/UXCADHorizontalObject_X512.png",
   "navigation": {
     "products": [
       {
@@ -88,10 +88,7 @@
       }
     ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
+  "logo": "/images/UXCADMain.svg",
   "navbar": {
     "links": [
       {
