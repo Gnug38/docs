@@ -88,7 +88,10 @@
       }
     ]
   },
-  "logo": "/images/UXCADwithTile_400X400.png",
+  "logo": {
+    "light": "/images/UXCADwithTile_400X400.png",
+    "dark": "/images/UXCADwithTile_400X400.png"
+  },
   "navbar": {
     "links": [
       {
