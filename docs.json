@@ -9,9 +9,9 @@
   },
   "favicon": "/images/UXCADwithTile_400X400.png",
   "navigation": {
-    "anchors": [
+    "dropdowns": [
       {
-        "anchor": "Civil3D",
+        "dropdown": "Civil3D",
         "tabs": [
           {
             "tab": "Subassemblies",
