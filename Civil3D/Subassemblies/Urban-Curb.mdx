@@ -28,24 +28,24 @@ The attachment point is located at the **Flange, FlowLine and Top Back Curb** of
 
 ## Input Parameters
 
-| Parameter | Display Name | Type | Default | Description |
+| Parameter | Display Name | Description | Type | Default |
 | --- | --- | --- | --- | --- |
-| Insertion\_Point | Attachment Point | InsertionPoint | InsertionPoint\_TopBack | Attachment Point |
-| Side | Side | Side | Right | Determines whether the subassembly is placed left or right. |
-| Dimension\_H | Curb Depth | Double | 0.5 | Curb Depth |
-| BackAttachPoint\_Visibility | Show Back of Curb Attach Point | Yes/No | No | Toggles the back curb attachment point on and off. |
-| Dimension\_G | Back of Curb Attachment Depth | Double | 0.25 | This has a 0.01' offset from back-attached subassembly. Subtract subassembly by 0.01 to retain exact distance. |
-| FlowLine\_TopFront\_Set | (TFC) Set by Height or Grade | FlowLine\_TopFront | FlowLine\_TopFront\_Depth | Controls whether the flowline to top front face difference is controlled by grade or height. |
-| Dimension\_C | FlowLine "FL" to TopFront "Face" Distance | Double | 0.5 | Distance from Flow Line to Top Front "Face" point. |
-| Dimension\_D | FlowLine "FL" to TopFront "Face" Height | Double | 0.5 | Height from Flow Line to Top Front "Face" point. |
-| Dimension\_D1 | FlowLine "FL" to TopFront "Face" Grade | Grade | 100.00% | Grade from Flow Line to Top Front "Face" point. |
-| TopFront\_TopBack\_Set | Top Front "Face" to Top Back "TBC" Set by Height or Grade | TopFront\_TopBack | TopFront\_TopBack\_Grade | Controls whether the top front face to top back curb difference is controlled by grade or height. |
-| Dimension\_E | Top Front "Face" to Top Back "TBC" Distance | Double | 0.5 | Distance from Top Front "Face" to Top Back "TBC" point. |
-| Dimension\_F | Top Front "Face" to Top Back "TBC" Height | Double | 0 | Height from Top Front "Face" to Top Back point. |
-| Dimension\_F1 | Top Front to Top Back Grade | Grade | 0.00% | Grade from Top Front "Face" to Top Back point. |
-| InsideBottomPointCode | Inside Bottom Point Code | String | Curb\_Sub | User defined inside bottom point code relative to the insertion point. |
-| OutsideBottomPointCode | Outside Bottom Point Code | String | Curb\_Sub | User defined outside bottom point code relative to the insertion point. |
-| BottomLinkCode | Bottom Link Code | String | Curb\_Sub | User defined bottom link code. |
+| Insertion\_Point | Attachment Point | Attachment Point | InsertionPoint | InsertionPoint\_TopBack |
+| Side | Side | Determines whether the subassembly is placed left or right. | Side | Right |
+| Dimension\_H | Curb Depth | Curb Depth | Double | 0.5 |
+| BackAttachPoint\_Visibility | Show Back of Curb Attach Point | Toggles the back curb attachment point on and off. | Yes/No | No |
+| Dimension\_G | Back of Curb Attachment Depth | This has a 0.01' offset from back-attached subassembly. Subtract subassembly by 0.01 to retain exact distance. | Double | 0.25 |
+| FlowLine\_TopFront\_Set | (TFC) Set by Height or Grade | Controls whether the flowline to top front face difference is controlled by grade or height. | FlowLine\_TopFront | FlowLine\_TopFront\_Depth |
+| Dimension\_C | FlowLine "FL" to TopFront "Face" Distance | Distance from Flow Line to Top Front "Face" point. | Double | 0.5 |
+| Dimension\_D | FlowLine "FL" to TopFront "Face" Height | Height from Flow Line to Top Front "Face" point. | Double | 0.5 |
+| Dimension\_D1 | FlowLine "FL" to TopFront "Face" Grade | Grade from Flow Line to Top Front "Face" point. | Grade | 100.00% |
+| TopFront\_TopBack\_Set | Top Front "Face" to Top Back "TBC" Set by Height or Grade | Controls whether the top front face to top back curb difference is controlled by grade or height. | TopFront\_TopBack | TopFront\_TopBack\_Grade |
+| Dimension\_E | Top Front "Face" to Top Back "TBC" Distance | Distance from Top Front "Face" to Top Back "TBC" point. | Double | 0.5 |
+| Dimension\_F | Top Front "Face" to Top Back "TBC" Height | Height from Top Front "Face" to Top Back point. | Double | 0 |
+| Dimension\_F1 | Top Front to Top Back Grade | Grade from Top Front "Face" to Top Back point. | Grade | 0.00% |
+| InsideBottomPointCode | Inside Bottom Point Code | User defined inside bottom point code relative to the insertion point. | String | Curb\_Sub |
+| OutsideBottomPointCode | Outside Bottom Point Code | User defined outside bottom point code relative to the insertion point. | String | Curb\_Sub |
+| BottomLinkCode | Bottom Link Code | User defined bottom link code. | String | Curb\_Sub |
 
 ---
 
