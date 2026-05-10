@@ -1,3 +1,106 @@
 ---
 title: "Daylight"
+description: "UXCAD’s version of a simplified and intuitive daylighting workflow for tying directly to a surface using configurable slope control, with the ability to toggle between slope-based and offset-based daylighting methods. Users can also define custom point and link codes for flexible corridor styling, quantities, and surface generation."
 ---
+
+## Overview
+
+The **UXCAD Dynamic Curb** subassembly creates a configurable curb section with control over flange, flowline, top front, and top back geometry. It is designed to let the user build curb conditions using either fixed dimensions, grades, or target-driven control points.
+
+This subassembly is useful for curb and gutter conditions where the curb shape needs to remain flexible while still maintaining consistent Civil 3D point, link, and shape coding.
+
+## Preview
+
+![UXCAD Dynamic Curb subassembly preview](/images/uxcad-dynamic-curb-preview.png)
+
+## Primary Use Cases
+
+- Standard curb and gutter sections
+- Flange-to-flowline controlled curb layouts
+- Flowline-to-top-front curb face control
+- Top-front-to-top-back curb cap control
+- Target-driven curb geometry
+- Code-controlled corridor surfaces and quantities
+
+## Attachment
+
+The attachment point is located at the **Flange, FlowLine and Top Back Curb** of the curb section.
+
+## Input Parameters
+
+| Parameter | Display Name | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| Side | Side | Side | Right | Determines whether the daylight condition is placed on the left or right side. |
+| DaylightType | Day Light Type | Daylight\_Type | Slope | Controls whether the daylight is driven by slope or offset distance. |
+| DaylightSlopeType | Daylight Surface Type | Daylight\_Surface\_Type | Slope | Controls whether the daylight ties to the surface using slope or grade logic. |
+| DaylightGrade | Daylight Grade | Grade | -2.00% | Grade used for daylight projection. |
+| DaylightSlope | Daylight Slope | Slope | -2.00:1 | Slope ratio used for daylight projection. |
+| DaylightDistance | Daylight Distance | Double | 10 | Offset distance used when daylighting by offset. |
+| InsidePointCode | Inside Point Code | String | P1 | Code assigned to the inside daylight point. |
+| OutsidePointCode | Outside Point Code | String | P2 | Code assigned to the outside daylight point. |
+| LinkCode | Link Code | String | L1 | Code assigned to the daylight link. |
+
+---
+
+## Target Parameters
+
+| Target Parameter | Type | Description | Required |
+| --- | --- | --- | --- |
+| DaylightSurface | Surface | Surface target used for daylight tie-in calculations. | Required |
+| DaylightOffset | Offset | Optional offset target controlling daylight location. | Optional |
+| DaylightElevation | Elevation | Optional elevation target controlling daylight elevation. | Optional |
+
+---
+
+## Enumerations
+
+<AccordionGroup>
+  <Accordion title="Daylight_Type">
+    Controls how the daylight geometry is calculated.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | Slope | Slope | Uses a slope value to daylight toward the target surface. |
+    | Offset | Offset | Uses a fixed horizontal offset distance for daylight placement. |
+  </Accordion>
+
+  <Accordion title="Daylight_Surface_Type">
+    Controls how the daylight interacts with the target surface.
+
+    | Enum Item | Display Name | Description |
+    | --- | --- | --- |
+    | Grade | Grade | Uses a grade-based daylight tie-in calculation. |
+    | Slope | Slope | Uses a slope-based daylight tie-in calculation. |
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Codes
+
+| Code | Type | Category |
+| --- | --- | --- |
+| Top | Link | Standard |
+| Daylight | Point, Link | Standard |
+| Cut | Point, Link | Standard |
+| Fill | Point, Link | Standard |
+
+---
+
+## Behavior
+
+The curb is built from the flange point and continues outward through the flowline, top front, and top back geometry. Each major curb segment can be controlled by a fixed height, fixed grade, or target parameter depending on the selected control method.
+
+## Notes
+
+Use this subassembly when the curb section needs to remain flexible across different design conditions without creating multiple separate curb subassemblies.
+
+## Recommended Image Setup
+
+Save your screenshots or Affinity graphics here:
+
+```text
+/images/uxcad-dynamic-curb-preview.png
+/images/uxcad-dynamic-curb-parameters.png
+/images/uxcad-dynamic-curb-targets.png
+```
